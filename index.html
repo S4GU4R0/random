@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Site Redirect</title>
+</head>
+<body>
+    <p>Finding you a random site...</p>
+    <script>
+        fetch('sites.json')
+            .then(response => response.json())
+            .then(data => {
+                const randomSite = data.sites[Math.floor(Math.random() * data.sites.length)];
+                window.location.href = randomSite;
+            })
+            .catch(error => {
+                document.body.innerHTML = '<p>Error loading sites. Please try again.</p>';
+            });
+    </script>
+</body>
+</html>
